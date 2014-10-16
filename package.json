@@ -1,0 +1,21 @@
+{
+  "name": "jsdom-repl",
+  "version": "0.0.1",
+  "description": "jsdom repl",
+  "main": "index.js",
+  "preferGlobal": true,
+  "bin": {
+    "jsdom-repl": "./index.js"
+  },
+  "keywords": [
+    "jsdom",
+    "repl"
+  ],
+  "author": "Joseph Werle <joseph.werle@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "minimist": "~1.1.0",
+    "jsdom": "~1.0.3",
+    "batch": "~0.5.1"
+  }
+}
