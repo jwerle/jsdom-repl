@@ -18,13 +18,9 @@ var window = null;
 process.on('SIGINT', exit);
 
 tasks.push(function (next) {
-  var src = argv._[0];
+  var src = argv._[0] || '';
 
-  if (null == src) {
-    return next(new Error("Missing source url or html"));
-  }
-
-  runtime = dom.env(src, argv.script || [], ready);
+  runtime = dom.env(src, [].concat(argv.script || []), ready);
 
   function ready (err, win) {
     if (err) {
@@ -42,13 +38,11 @@ tasks.push(function (next) {
     input: process.stdin,
     output: process.stdout,
     useGlobal: false,
-    ignoreUndefined: true,
     eval: oneval
   });
 
   r.context = window;
   window.console = console;
-
 
   r.on('exit', function () {
     put()
