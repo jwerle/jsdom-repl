@@ -17,8 +17,20 @@ var window = null;
 
 process.on('SIGINT', exit);
 
+function help () {
+  console.log("usage: jsdom-repl [-hV] [src] [--script=script]")
+}
+
 tasks.push(function (next) {
   var src = argv._[0] || '';
+
+  if (argv.h || argv.help) {
+    help();
+    exit(0);
+  } else if (argv.V || argv.version) {
+    console.log("jsdom-repl v%s", require('./package').version);
+    exit(0);
+  }
 
   runtime = dom.env(src, [].concat(argv.script || []), ready);
 
